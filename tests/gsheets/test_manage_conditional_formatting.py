@@ -21,6 +21,7 @@ def _unwrap(tool):
 
 
 def _create_mock_service(sheets=None):
+    """Create a mock Sheets service client with configured sheet metadata."""
     if sheets is None:
         sheets = [
             {
@@ -40,6 +41,7 @@ def _create_mock_service(sheets=None):
 
 @pytest.mark.asyncio
 async def test_add_missing_condition_type_and_gradient_raises_error():
+    """Test adding conditional format rule without condition_type or gradient_points raises UserInputError."""
     service = _create_mock_service()
     with pytest.raises(
         UserInputError,
@@ -56,6 +58,7 @@ async def test_add_missing_condition_type_and_gradient_raises_error():
 
 @pytest.mark.asyncio
 async def test_add_valid_boolean_rule_success():
+    """Test successfully adding a boolean conditional format rule."""
     service = _create_mock_service()
     result = await _unwrap(sheets_tools.manage_conditional_formatting)(
         service=service,
@@ -73,6 +76,7 @@ async def test_add_valid_boolean_rule_success():
 
 @pytest.mark.asyncio
 async def test_add_valid_gradient_rule_success():
+    """Test successfully adding a gradient color scale conditional format rule."""
     service = _create_mock_service()
     result = await _unwrap(sheets_tools.manage_conditional_formatting)(
         service=service,
