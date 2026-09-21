@@ -482,7 +482,7 @@ async def _insert_smart_chips_impl(
     user_google_email: str,
     spreadsheet_id: str,
     range_name: str,
-    chips: Union[str, List[Union[str, dict]], List[List[Union[str, dict]]]],
+    chips: Union[str, dict, List[Union[str, dict]], List[List[Union[str, dict]]]],
     chip_type: Optional[str] = None,
 ) -> str:
     """Internal implementation for insert_smart_chips.
@@ -610,7 +610,7 @@ async def insert_smart_chips(
     user_google_email: str,
     spreadsheet_id: str,
     range_name: str,
-    chips: Union[str, List[Union[str, dict]], List[List[Union[str, dict]]]],
+    chips: Union[str, dict, List[Union[str, dict]], List[List[Union[str, dict]]]],
     chip_type: Optional[str] = None,
 ) -> str:
     """
