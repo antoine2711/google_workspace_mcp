@@ -2261,7 +2261,6 @@ async def manage_sheet_tab(
             fields = "hidden"
             summary = f"{action_lower} sheet '{sheet_name}'"
         else:
-            if new_index >= len(sheets):
             if new_index is None or new_index >= len(sheets):
                 raise UserInputError(
                     f"new_index must be less than the number of sheets ({len(sheets)})."
