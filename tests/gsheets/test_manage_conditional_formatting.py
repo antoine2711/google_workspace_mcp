@@ -91,4 +91,3 @@ async def test_add_valid_gradient_rule_success():
     )
     assert "Added conditional format" in result
     assert "gradient" in result
-
