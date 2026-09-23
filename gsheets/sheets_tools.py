@@ -2605,7 +2605,34 @@ async def _read_sheet_dimensions_impl(
     sheet_name: Optional[str] = None,
     include_rows: bool = False,
 ) -> dict:
-    """Internal implementation for read_sheet_dimensions."""
+    """Internal implementation for read_sheet_dimensions.
+
+    Reads visual dimension properties of a sheet: column widths in pixels,
+    hidden column status, row heights in pixels, hidden row status,
+    and total grid dimensions (rowCount x columnCount).
+
+    Args:
+        service: Google Sheets API service client.
+        spreadsheet_id: The ID of the spreadsheet. Required.
+        sheet_name: Sheet name to target. Defaults to the first sheet if omitted.
+        include_rows: Whether to extract and include individual row heights. Defaults to False.
+
+    Returns:
+        Dictionary with keys:
+            - spreadsheet_id (str): The ID of the spreadsheet.
+            - sheet_name (str): Title of the target sheet.
+            - sheet_id (int): Numeric sheet ID.
+            - row_count (int): Total allocated row count in the grid.
+            - column_count (int): Total allocated column count in the grid.
+            - column_sizes (dict[str, int]): Dict mapping column letters (A, B, ...) to pixel widths.
+            - hidden_columns (list[str]): List of column letters hidden by user.
+            - row_sizes (dict[int, int]): Dict mapping 1-based row numbers to pixel heights.
+            - hidden_rows (list[int]): List of 1-based row numbers hidden by user.
+
+    Raises:
+        UserInputError: If the spreadsheet contains no sheets or if the requested
+            sheet_name is not found.
+    """
     metadata = await asyncio.to_thread(
         service.spreadsheets()
         .get(
@@ -2727,6 +2754,10 @@ async def read_sheet_dimensions(
     Returns:
         str: Formatted text displaying sheet dimensions, column widths, and a JSON
              mapping ready for use in resize_sheet_dimensions.
+
+    Raises:
+        UserInputError: If the spreadsheet contains no sheets or if the requested
+            sheet_name is not found.
     """
     logger.info(
         "[read_sheet_dimensions] Invoked. Email: '%s', Spreadsheet: %s, Sheet: %s",
