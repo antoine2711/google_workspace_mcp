@@ -46,7 +46,7 @@ def create_mock_service(
                 {
                     "properties": {
                         "sheetId": 12345,
-                        "title": "Courriels (A@B.QC)",
+                        "title": "Feuille",
                         "gridProperties": {"rowCount": 500, "columnCount": 6},
                     }
                 },
@@ -59,7 +59,7 @@ def create_mock_service(
                 {
                     "properties": {
                         "sheetId": 12345,
-                        "title": "Courriels (A@B.QC)",
+                        "title": "Feuille",
                         "gridProperties": {"rowCount": 500, "columnCount": 6},
                     },
                     "data": [
@@ -102,12 +102,12 @@ async def test_read_sheet_dimensions_impl_explicit_metadata():
     result = await _read_sheet_dimensions_impl(
         service=mock_service,
         spreadsheet_id="test_sheet_123",
-        sheet_name="Courriels (A@B.QC)",
+        sheet_name="Feuille",
         include_rows=True,
     )
 
     assert result["spreadsheet_id"] == "test_sheet_123"
-    assert result["sheet_name"] == "Courriels (A@B.QC)"
+    assert result["sheet_name"] == "Feuille"
     assert result["sheet_id"] == 12345
     assert result["row_count"] == 500
     assert result["column_count"] == 6
@@ -138,11 +138,11 @@ async def test_read_sheet_dimensions_formatted_output():
         service=mock_service,
         user_google_email="user@example.com",
         spreadsheet_id="test_sheet_123",
-        sheet_name="Courriels (A@B.QC)",
+        sheet_name="Feuille",
         include_rows=False,
     )
 
-    assert 'Sheet: "Courriels (A@B.QC)"' in output
+    assert 'Sheet: "Feuille"' in output
     assert "Grid size: 500 rows x 6 columns" in output
     assert "Column A: 140px" in output
     assert "Column F: 90px (hidden)" in output
@@ -163,7 +163,7 @@ async def test_read_sheet_dimensions_not_found_raises():
         )
 
     assert "Sheet 'NonexistentSheet' not found" in str(exc_info.value)
-    assert "Courriels (A@B.QC)" in str(exc_info.value)
+    assert "Feuille" in str(exc_info.value)
 
 
 @pytest.mark.asyncio
@@ -330,7 +330,7 @@ async def test_read_sheet_dimensions_json_validity():
         service=mock_service,
         user_google_email="user@example.com",
         spreadsheet_id="test_sheet_123",
-        sheet_name="Courriels (A@B.QC)",
+        sheet_name="Feuille",
     )
 
     # Extract JSON line
