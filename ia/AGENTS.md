@@ -1,6 +1,8 @@
 # Directives et Instructions pour les Agents IA
 
 Ce document contient les directives fondamentales, les principes d'automatisation, et les règles architecturales à respecter rigoureusement lors de toute intervention sur le projet `google_workspace_mcp`.
+Site internet : https://workspacemcp.com/
+
 
 ---
 
