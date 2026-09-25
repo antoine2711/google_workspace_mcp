@@ -2781,7 +2781,7 @@ async def read_sheet_dimensions(
     hidden_cols = data["hidden_columns"]
 
     lines = [
-        f"Sheet: \"{title}\" (ID: {sheet_id})",
+        f'Sheet: "{title}" (ID: {sheet_id})',
         f"Grid size: {row_count} rows x {col_count} columns",
         f"\nColumn widths ({len(col_sizes)} explicit / {col_count} total):",
     ]
