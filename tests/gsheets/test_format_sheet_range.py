@@ -664,4 +664,3 @@ async def test_format_sheet_range_tool_wrapper_merge():
     assert "Applied formatting to range 'J3:L3'" in output
     assert "merged cells (MERGE_ALL)" in output
     assert "user@example.com" in output
-
