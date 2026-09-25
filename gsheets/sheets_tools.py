@@ -802,7 +802,9 @@ async def _format_sheet_range_impl(
     grid_range = _parse_a1_range(range_name, sheets)
 
     # Check for single-cell merge error
-    if merge_cells is True or (merge_cells is None and normalized_merge_type is not None):
+    if merge_cells is True or (
+        merge_cells is None and normalized_merge_type is not None
+    ):
         start_row = grid_range.get("startRowIndex")
         end_row = grid_range.get("endRowIndex")
         start_col = grid_range.get("startColumnIndex")
@@ -885,7 +887,9 @@ async def _format_sheet_range_impl(
             }
         )
 
-    if merge_cells is True or (merge_cells is None and normalized_merge_type is not None):
+    if merge_cells is True or (
+        merge_cells is None and normalized_merge_type is not None
+    ):
         requests.append(
             {
                 "mergeCells": {
@@ -940,7 +944,9 @@ async def _format_sheet_range_impl(
         applied_parts.append("italic" if italic else "not italic")
     if font_size is not None:
         applied_parts.append(f"font size {font_size}")
-    if merge_cells is True or (merge_cells is None and normalized_merge_type is not None):
+    if merge_cells is True or (
+        merge_cells is None and normalized_merge_type is not None
+    ):
         applied_parts.append(f"merged cells ({normalized_merge_type})")
     elif merge_cells is False:
         applied_parts.append("unmerged cells")
@@ -2861,7 +2867,7 @@ async def read_sheet_dimensions(
     hidden_cols = data["hidden_columns"]
 
     lines = [
-        f"Sheet: \"{title}\" (ID: {sheet_id})",
+        f'Sheet: "{title}" (ID: {sheet_id})',
         f"Grid size: {row_count} rows x {col_count} columns",
         f"\nColumn widths ({len(col_sizes)} explicit / {col_count} total):",
     ]
