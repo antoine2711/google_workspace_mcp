@@ -13,6 +13,7 @@ Ce document répertorie le statut des contributions en cours d'Antoine Beaubien,
 | **#1148** | `fix-gsheets-typing-and-uv-lock` | Améliorations de typage et alignement `uv.lock`. | **Ouverte** 🔄 |
 | **#1173** | `feat-read-sheet-dimensions` | Ajout de l'outil `read_sheet_dimensions` (largeurs de colonnes et hauteurs de lignes). | **Draft (CI 100% verte)** 🟢 |
 | **#1175** | `feat-merge-unmerge-cells` | Ajout des capacités de fusion/défusion (`merge_cells`, `merge_type`) dans `format_sheet_range`. | **Draft (CI 100% verte)** 🟢 |
+| **#1182** | `feat-gsheets-manage-filter-basic` | Ajout de l'outil `manage_sheet_basic_filter` (ajouter, modifier, supprimer, inspecter les filtres). | **Draft (CI 100% verte)** 🟢 |
 
 ---
 
