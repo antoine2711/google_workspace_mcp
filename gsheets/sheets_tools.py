@@ -37,7 +37,6 @@ from gsheets.sheets_helpers import (
     _format_named_ranges_list,
     _format_sheet_error_section,
     _grid_range_to_a1,
-    _index_to_column,
     _normalize_chips_input,
     _parse_a1_range,
     _parse_condition_values,
